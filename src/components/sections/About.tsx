@@ -9,15 +9,17 @@ import {
   MusicalNoteIcon,
   GlobeAltIcon,
   SparklesIcon,
+  CodeBracketIcon,
+  ChartBarIcon,
 } from "@heroicons/react/24/outline";
 
-interface FunFact {
+interface BeyondCodeFact {
   icon: React.ReactNode;
   title: string;
   description: string;
 }
 
-const funFacts: FunFact[] = [
+const beyondCodeFacts: BeyondCodeFact[] = [
   {
     icon: <GlobeAltIcon className="w-6 h-6" />,
     title: "Multilingual Learner",
@@ -26,9 +28,9 @@ const funFacts: FunFact[] = [
   },
   {
     icon: <BookOpenIcon className="w-6 h-6" />,
-    title: "Book Lover",
+    title: "Reading Journey",
     description:
-      "Passionate about tech, fiction, and thought-provoking reads. Always growing the bookshelf!",
+      "Passionate about Fantasy, Mystery, Thriller, and Young Adult genres. Currently reading 'The Dragon Republic' by R.F. Kuang.",
   },
   {
     icon: <HeartIcon className="w-6 h-6" />,
@@ -51,141 +53,162 @@ const funFacts: FunFact[] = [
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="py-16 bg-white dark:bg-gray-900">
+    <section id="about" className="py-24 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
+          className="text-center mb-20"
         >
-          <h2 className="section-title mb-4">About Me</h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            A Full-Stack Developer and AI/ML Enthusiast bridging the gap between
-            data analysis and software engineering
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="inline-block mb-6"
+          >
+            <div className="bg-gradient-to-r from-emerald-400 to-blue-400 text-white px-6 py-2 rounded-full text-sm font-medium flex items-center gap-2">
+              <SparklesIcon className="w-4 h-4" />
+              <span>About Me</span>
+            </div>
+          </motion.div>
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 font-poppins">
+            My Journey
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto font-inter">
+            From data analytics to software engineering, my path has been driven
+            by a passion for technology and continuous learning.
           </p>
         </motion.div>
 
-        {/* Professional Journey */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
-            className="space-y-6"
-          >
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white flex items-center">
-              <RocketLaunchIcon className="w-6 h-6 mr-2 text-primary-500" />
-              Professional Journey
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              My journey began in data analytics, where I developed a strong
-              foundation in SQL, automation, and scripting. This background
-              naturally evolved into software engineering, where I now build
-              full-stack applications that combine data-driven insights with
-              innovative solutions.
-            </p>
-            <div className="space-y-4">
-              <div className="flex items-start">
-                <div className="flex-shrink-0">
-                  <AcademicCapIcon className="w-6 h-6 text-primary-500" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+          {/* Education & Experience */}
+          <div className="space-y-8">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3 }}
+              className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg">
+                  <AcademicCapIcon className="w-6 h-6 text-emerald-500 dark:text-emerald-400" />
                 </div>
-                <div className="ml-4">
-                  <h4 className="font-semibold text-gray-900 dark:text-white">
-                    Education
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white font-montserrat">
+                  Education
+                </h3>
+              </div>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-medium text-gray-900 dark:text-white">
+                    Software Engineering Diploma
                   </h4>
-                  <ul className="mt-2 space-y-2 text-gray-600 dark:text-gray-400">
-                    <li>
-                      • BComm in Economics, Minor in Finance - Toronto
-                      Metropolitan University
-                    </li>
-                    <li>• Software Engineering Diploma - BrainStation</li>
-                    <li>
-                      • Data Science & AI/ML with Python - M2M Tech (ongoing)
-                    </li>
-                  </ul>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    Lighthouse Labs
+                  </p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    2023
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-medium text-gray-900 dark:text-white">
+                    Bachelor's Degree in Economics
+                  </h4>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    University of Toronto
+                  </p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    2018
+                  </p>
                 </div>
               </div>
-              <div className="flex items-start">
-                <div className="flex-shrink-0">
-                  <LightBulbIcon className="w-6 h-6 text-primary-500" />
-                </div>
-                <div className="ml-4">
-                  <h4 className="font-semibold text-gray-900 dark:text-white">
-                    Notable Achievements
-                  </h4>
-                  <ul className="mt-2 space-y-2 text-gray-600 dark:text-gray-400">
-                    <li>
-                      • Built KoiPond, a full-stack community resource-sharing
-                      app
-                    </li>
-                    <li>
-                      • Automated 30% of reporting tasks at Hope & Healing
-                      International
-                    </li>
-                    <li>
-                      • Optimized internal reporting at StackAdapt, reducing
-                      report generation time by 20%
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
 
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4 }}
+              className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg">
+                  <CodeBracketIcon className="w-6 h-6 text-emerald-500 dark:text-emerald-400" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white font-montserrat">
+                  Experience
+                </h3>
+              </div>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-medium text-gray-900 dark:text-white">
+                    Software Engineer
+                  </h4>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    Current
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-medium text-gray-900 dark:text-white">
+                    Data Analyst
+                  </h4>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    Previous
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Skills */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 }}
-            className="space-y-6"
+            transition={{ delay: 0.3 }}
+            className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg"
           >
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white flex items-center">
-              <LightBulbIcon className="w-6 h-6 mr-2 text-primary-500" />
-              Vision & Approach
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              I'm passionate about leveraging technology to create meaningful
-              impact. My approach combines structured methodologies like Agile
-              and TDD with creative problem-solving to build innovative
-              solutions.
-            </p>
-            <div className="space-y-4">
-              <div>
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
-                  Problem-Solving Approach
-                </h4>
-                <p className="text-gray-600 dark:text-gray-400">
-                  I prefer a structured yet flexible approach, using
-                  methodologies like Agile, test-driven development (TDD), and
-                  breaking problems into manageable components.
-                </p>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-2 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg">
+                <ChartBarIcon className="w-6 h-6 text-emerald-500 dark:text-emerald-400" />
               </div>
-              <div>
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
-                  Vision for Technology
-                </h4>
-                <p className="text-gray-600 dark:text-gray-400">
-                  I see AI/ML as a transformative force, particularly in
-                  automating repetitive tasks, enhancing decision-making, and
-                  fostering inclusivity in tech solutions.
-                </p>
-              </div>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white font-montserrat">
+                Skills
+              </h3>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <span className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-full text-sm">
+                React
+              </span>
+              <span className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-full text-sm">
+                TypeScript
+              </span>
+              <span className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-full text-sm">
+                Node.js
+              </span>
+              <span className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-full text-sm">
+                Python
+              </span>
+              <span className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-full text-sm">
+                SQL
+              </span>
+              <span className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-full text-sm">
+                Git
+              </span>
             </div>
           </motion.div>
         </div>
 
-        {/* Fun Facts */}
+        {/* Beyond Code */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="bg-gray-50 dark:bg-gray-800 rounded-xl p-8"
+          className="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 mt-12"
         >
           <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center">
             <HeartIcon className="w-6 h-6 mr-2 text-primary-500" />
-            Fun Facts
+            Beyond Code
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {funFacts.map((fact, index) => (
+            {beyondCodeFacts.map((fact, index) => (
               <motion.div
                 key={fact.title}
                 initial={{ opacity: 0, y: 20 }}
@@ -203,6 +226,24 @@ const About: React.FC = () => {
                   <p className="text-gray-600 dark:text-gray-400 text-sm mt-1">
                     {fact.description}
                   </p>
+                  {fact.title === "Reading Journey" && (
+                    <a
+                      href="https://www.goodreads.com/user/show/92925494-kristen-joy"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-300 transition-colors mt-2 text-sm"
+                    >
+                      <span>View my Goodreads profile</span>
+                      <svg
+                        className="w-3 h-3"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path d="M21 13v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h7v2H5v14h14v-6h2zm3-8h-4V1l5 4z" />
+                      </svg>
+                    </a>
+                  )}
                 </div>
               </motion.div>
             ))}

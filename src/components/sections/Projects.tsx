@@ -89,11 +89,6 @@ const Projects: React.FC = () => {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-20 -right-20 w-40 h-40 bg-emerald-200 dark:bg-emerald-900 rounded-full opacity-20 blur-3xl"></div>
         <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-blue-200 dark:bg-blue-900 rounded-full opacity-20 blur-3xl"></div>
-        <div className="absolute top-10 left-1/4 w-8 h-8 bg-yellow-300 rounded-full opacity-20 animate-bounce"></div>
-        <div
-          className="absolute bottom-20 right-1/3 w-6 h-6 bg-pink-300 rounded-full opacity-20 animate-bounce"
-          style={{ animationDelay: "0.2s" }}
-        ></div>
       </div>
 
       <div className="container mx-auto px-4 relative">
@@ -144,13 +139,15 @@ const Projects: React.FC = () => {
                       {project.title}
                     </h3>
                   </div>
-                  <div className="flex gap-3">
+                  <div className="flex gap-3 relative z-10">
                     {project.videoUrl && (
                       <button
-                        onClick={() =>
-                          project.videoUrl && setSelectedVideo(project.videoUrl)
-                        }
-                        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-400 to-blue-400 text-white rounded-lg hover:from-emerald-500 hover:to-blue-500 transition-all duration-200 shadow-md hover:shadow-lg group"
+                        type="button"
+                        onClick={() => {
+                          console.log("Opening video:", project.videoUrl);
+                          setSelectedVideo(project.videoUrl || null);
+                        }}
+                        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-400 to-blue-400 text-white rounded-lg hover:from-emerald-500 hover:to-blue-500 transition-all duration-200 shadow-md hover:shadow-lg group cursor-pointer relative z-20"
                       >
                         <PlayIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
                         <span className="font-medium">Watch Demo</span>
@@ -160,7 +157,11 @@ const Projects: React.FC = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-300 rounded-lg hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition-all duration-200 hover:scale-105 group"
+                      className="flex items-center gap-2 px-4 py-2 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-300 rounded-lg hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition-all duration-200 hover:scale-105 group relative z-20"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        window.open(project.githubUrl, "_blank");
+                      }}
                     >
                       <CodeBracketIcon className="w-5 h-5 group-hover:rotate-12 transition-transform" />
                       <span className="font-medium">View Code</span>

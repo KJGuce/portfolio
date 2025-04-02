@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
@@ -15,6 +15,12 @@ const VideoModal: React.FC<VideoModalProps> = ({
   videoUrl,
   title,
 }) => {
+  useEffect(() => {
+    if (isOpen) {
+      console.log("VideoModal opened with URL:", videoUrl);
+    }
+  }, [isOpen, videoUrl]);
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -46,6 +52,18 @@ const VideoModal: React.FC<VideoModalProps> = ({
                 className="w-full h-full object-cover"
                 controls
                 playsInline
+                preload="auto"
+                onError={(e) => {
+                  console.error("Video loading error:", e);
+                  console.error("Video URL:", videoUrl);
+                  onClose();
+                }}
+                onLoadStart={() =>
+                  console.log("Video loading started:", videoUrl)
+                }
+                onLoadedData={() =>
+                  console.log("Video loaded successfully:", videoUrl)
+                }
               >
                 Your browser does not support the video tag.
               </video>
